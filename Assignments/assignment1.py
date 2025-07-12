@@ -1,30 +1,46 @@
-# Student Profile System
+# Personal Health Monitoring System
 
-student_id = int(input("Enter Student ID: "))
-student_name = input("Enter your name: ")
-gpa = float(input("Enter your current GPA (out of 10): "))
-subjects = list(input("Enter your enrolled subjects: ").split())
-marks = tuple(map(int, input("Enter marks for each subject: ").split()))
-extracurriculars = set(input("Enter your extracurricular activities: ").split())
-contact_details = eval(input("Enter your contact details as a dictionary (e.g., {'Phone':1234567890,'Email':'abc@example.com'}): "))
-scholarship_percentage = float(input("Scholarship percentage awarded: "))
+user_id = int(input("Enter User ID: "))
+user_name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+weight = float(input("Enter your current weight in kg: "))
+height = float(input("Enter your height in cm: "))
+daily_steps = int(input("Enter the number of steps walked today: "))
+health_conditions = list(input("Mention any known health conditions (separated by space): ").split())
+vital_signs = tuple(map(float, input("Enter today's vital signs [Temperature(C), BP(High), BP(Low), Sugar level(mg/dL)]: ").split()))
+medications = set(input("Enter medications you are currently taking (space-separated): ").split())
+emergency_contact = eval(input("Enter your emergency contact details as a dictionary (e.g., {'Name':'Mom', 'Phone':9876543210}): "))
 
-student_info = {
-    "Name": student_name,
-    "ID": student_id
+bmi = round(weight / ((height / 100) ** 2), 2)
+
+user_info = {
+    "Name": user_name,
+    "ID": user_id
 }
 
 print()
-print("Student_name, ID: ", end="")
-print(student_name, student_id, sep=",")
-print(f"GPA: {gpa}")
-print("Scholarship: %.2f%%" % scholarship_percentage)
-print("Contact Info - Phone: {Phone}, Email: {Email}".format(**contact_details))
-print("Name: {Name}, ID: {ID}".format_map(student_info))
+print("Health Profile for", user_name)
+print(f"Age: {age}, Weight: {weight}kg, Height: {height}cm")
+print("BMI:", bmi)
+print(f"Steps Walked Today: {daily_steps}")
+print("Known Conditions:", ', '.join(health_conditions))
+print("Vital Signs:")
+print(f"  Temperature: {vital_signs[0]}°C")
+print(f"  Blood Pressure: {vital_signs[1]}/{vital_signs[2]} mmHg")
+print(f"  Sugar Level: {vital_signs[3]} mg/dL")
+print("Medications:", ', '.join(medications))
+print("Emergency Contact - Name: {Name}, Phone: {Phone}".format(**emergency_contact))
+print("User: {Name}, ID: {ID}".format_map(user_info))
 
-
-# Student_name, ID: Revanth,945
-# GPA: 9.16
-# Scholarship: 75.00%
-# Contact Info - Phone: 9347296933, Email: revanthbalabhadruni@gmail.com
-# Name: Revanth, ID: 945
+# Health Profile for Revanth  
+# Age: 24, Weight: 75kg, Height: 178cm  
+# BMI: 23.67  
+# Steps Walked Today: 8000  
+# Known Conditions: hypertension  
+# Vital Signs:  
+#   Temperature: 36.6°C  
+#   Blood Pressure: 120/80 mmHg  
+#   Sugar Level: 92 mg/dL  
+# Medications: Amlodipine  
+# Emergency Contact - Name: Mom, Phone: 9876543210  
+# User: Revanth, ID: 1001
